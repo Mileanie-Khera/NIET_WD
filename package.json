@@ -1,0 +1,23 @@
+{
+  "name": "NIET_WD",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mileanie-Khera/NIET_WD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mileanie-Khera/NIET_WD/issues"
+  },
+  "homepage": "https://github.com/Mileanie-Khera/NIET_WD#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
