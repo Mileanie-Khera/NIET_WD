@@ -53,7 +53,7 @@ function applyNFlag(){
     let count=1;
     for(let i=0  ; i<dataComps.length ; i++){
         // 1.hey i am f1
-        dataComps[i] = `${count}.${dataComps[i]}`;  //string interpolation
+        dataComps[i] = `${count}.${dataComps[i]}`;  //string interpolation-> in this we can add string along with enter i.e. nextline
         count++;
     }
     // console.log(dataComps);
