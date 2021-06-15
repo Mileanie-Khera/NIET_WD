@@ -1,5 +1,5 @@
 const fs = require("fs");
-// pomisified way mei files parallely
+// promisified way mei files parallely
 let f1KaPromise  = fs.promises.readFile("./f1.txt");
 
 
