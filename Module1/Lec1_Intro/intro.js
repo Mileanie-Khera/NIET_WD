@@ -51,12 +51,15 @@ let movies = ["The winter soldier", "Civil War", 100, ""];
 // push , pop , unshift , shift , splice
 
 // console.log(movies[2]);
-movies.pop();
-movies.push("ENDGAME");
-movies.unshift("THe FIrst Avenger"); // append at the start of the array
-// console.log(movies);
+movies.pop();//removes last
+console.log(movies);
+movies.push("ENDGAME");//adds at end of array
+console.log(movies);
+movies.unshift("THe First Avenger"); // append at the start of the array
+console.log(movies);
 
 movies.splice(2, 1);
+console.log(movies);
 
 // movies[100] = "find me";
 
