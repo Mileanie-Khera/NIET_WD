@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer");
 const id ="nagidi9432@gocasin.com";
 const pw = "1813310106";
+let solutions = require("./solutions");
+let code;
 let tab;
 // puppeteer functions => promisifed functions
 
@@ -43,13 +45,9 @@ browserOpenPromise.then(function (browserInstance) {
       let ipKitClickedPromise = tab.click('#base-card-1-link');
       return ipKitClickedPromise;
   })
-  .then(function(){
-      let waitPromise = tab.waitForSelector('a[data-attr1="warmup"]' , {visible:true});
-      return waitPromise;
-  })
-  .then(function(){
-      let warmupChallengesPromise = tab.click('a[data-attr1="warmup"]');
-      return warmupChallengesPromise;
+  .then(function () {
+    let waitAndClickPromise = waitAndClick('a[data-attr1="warmup"]');
+    return waitAndClickPromise;
   })
   .then(function(){
       let waitPromise = tab.waitForSelector('.js-track-click.challenge-list-item');
@@ -70,10 +68,103 @@ browserOpenPromise.then(function (browserInstance) {
     let combinedPromise = Promise.all(allQuesLinksPromise);//promise.all() will return one single promise containing arrya of all promises either resolved or rejected
     return combinedPromise; //Promise<Pending>
   })
-  .then(function(allQuesLinks){
-      console.log(allQuesLinks);
-  })
+  .then(function (allQuesLinks) {
+    let oneQuesSolvePromise = solveQuestion(allQuesLinks[0]);
+    return oneQuesSolvePromise;
+}).then(function(){
+    console.log("One Question Solved !!");
+})
   .catch(function(err){//this catch function is common for all functions,if any of the function falis then this catch will work
       console.log("Inside catch");// to know that which function has failed print the error 
       console.log(err);
   })
+  function waitAndClick(selector) {
+    return new Promise(function (scb, fcb) {
+      let waitPromise = tab.waitForSelector(selector, { visible: true });
+      waitPromise.then(function () {
+          let clickPromise = tab.click(selector);
+          return clickPromise;
+        })
+        .then(function () {
+          scb();
+        })
+        .catch(function (error) {
+          fcb();
+        });
+    });
+  }
+  
+  
+  function solveQuestion(quesLink){
+      return new Promise( function(scb , fcb){
+          
+          let completeLink = "https://www.hackerrank.com"+quesLink;
+          let gotoQuesPromise = tab.goto(completeLink);
+          gotoQuesPromise.then(function(){
+              let quesNamePromise = tab.$('.ui-icon-label.page-label');
+              return quesNamePromise;
+          })
+          .then(function(quesNameH1Tag){
+              let quesPromise = tab.evaluate(function(elem){ return elem.textContent;} , quesNameH1Tag);
+              return quesPromise;
+          })
+          .then(function(quesName){
+              console.log(quesName);
+              for(let i=0; i<solutions.length ; i++){
+                  if(solutions[i].name == quesName){
+                      code = solutions[i].sol;
+                      break;
+                  }
+              }
+              let waitAndClickPromise = waitAndClick('.checkbox-input');
+              return waitAndClickPromise;
+          })
+          .then(function(){
+              let waitPromise = tab.waitForTimeout(1000);
+              return waitPromise;
+          })
+          .then(function(){
+              let codeTypePromise =  tab.type('#input-1' , code);
+              return codeTypePromise;
+          })
+          .then(function(){
+              let ctrlKeyDown = tab.keyboard.down("Control");
+              return ctrlKeyDown;
+          })
+          .then(function(){
+              let aKeyPress = tab.keyboard.press("a");
+              return aKeyPress;
+          })
+          .then(function(){
+              let xkeyPress = tab.keyboard.press("x");
+              return xkeyPress;
+          })
+          .then(function(){
+              let codeBoxClickedPromise =  tab.click('.monaco-scrollable-element.editor-scrollable.vs');
+              return codeBoxClickedPromise;
+          })
+          .then(function(){
+              let aKeyPress = tab.keyboard.press("a");
+              return aKeyPress;
+          })
+          .then(function(){
+              let vkeyPress = tab.keyboard.press("v");
+              return vkeyPress;
+          })
+          .then(function(){
+              let ctrlKeyUp = tab.keyboard.up("Control");
+              return ctrlKeyUp;
+          })
+          .then(function(){
+              let submitBtnClicked = tab.click('.ui-btn.ui-btn-normal.hr-monaco-submit');
+              return submitBtnClicked;
+          })
+          .then(function(){
+              scb();
+          })
+          .catch(function(err){
+              fcb(err);
+          })
+  
+      })
+  }
