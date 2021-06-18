@@ -109,7 +109,7 @@ module.exports = [
                 if(A[i] == 0) dp[i] = min(dp[i-1], dp[i-2]) + 1;
                 else dp[i] = inf;
             }
-            cout << dp[n] << "\n";
+            cout << dp[n];
             return 0;
         }`,
     },
