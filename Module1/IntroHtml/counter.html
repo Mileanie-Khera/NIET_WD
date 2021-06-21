@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>counter</h1>
+        <button id="plus">+</button>
+        <p>0</p>
+        <button id="minus">-</button>
+        <script>
+        
+        let plus = document.querySelector("#plus");
+        
+        let minus = document.querySelector("#minus");
+        
+        let p =document.querySelector("p");
+
+        
+        plus.addEventListener("click",function(){
+            let oldValue = Number(p.innerText)
+            let newValue = oldValue+1;
+            p.innerText = newValue;
+        });
+        minus.addEventListener("click",function(){
+            let oldValue = Number(p.innerText)
+            let newValue = oldValue-1;
+            p.innerText = newValue;
+        });
+        </script>
+    </body>
+</html>
