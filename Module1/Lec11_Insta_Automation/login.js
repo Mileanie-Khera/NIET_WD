@@ -35,14 +35,20 @@ const searchFor = "pepcoding";
         await tab.click('[href="/p/CQXjVexr1OH/"]');
         await tab.waitForSelector(".fr66n");
         await tab.click(".fr66n");
+        for(let i=0;i<25;i++){
+            await tab.waitForSelector("._65Bje.coreSpriteRightPaginationArrow");
+            await tab.click("._65Bje.coreSpriteRightPaginationArrow");
+            await tab.waitForSelector(".fr66n");
+            await tab.click(".fr66n");
+        }
+        console.log("liked");
+        // await tab.keyboard.press("Escape");
+        // await tab.waitForSelector('[href="/p/CQS4b2BLUgw/"]');
+        // await tab.click('[href="/p/CQS4b2BLUgw/"]');
+        // await tab.waitForSelector(".fr66n");
+        // await tab.click(".fr66n");
+        //await tab.keyboard.press("Escape");
         
-        await tab.keyboard.press("Escape");
-        await tab.waitForSelector('[href="/p/CQS4b2BLUgw/"]');
-        await tab.click('[href="/p/CQS4b2BLUgw/"]');
-        await tab.waitForSelector(".fr66n");
-        await tab.click(".fr66n");
-        
-        await tab.keyboard.press("Escape");
     }
     catch(err){
         console.log(err);
