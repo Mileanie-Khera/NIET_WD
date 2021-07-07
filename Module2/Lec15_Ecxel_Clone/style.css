@@ -76,7 +76,7 @@ body {
   width: 30px;
   background-color: gray;
   position: fixed;
-  z-index: 10;
+  
 }
 
 .row-number-section {
@@ -93,6 +93,7 @@ body {
   align-items: center;
   border: none;
   border-bottom: 1px solid;
+  
 }
 
 .column-tag-section {

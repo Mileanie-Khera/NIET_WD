@@ -31,8 +31,8 @@ const searchFor = "pepcoding";
         console.log("searching");
         await tab.waitForSelector(".-qQT3[href='/pepcoding/']");
         await tab.click(".-qQT3[href='/pepcoding/']");     
-        await tab.waitForSelector('[href="/p/CQXjVexr1OH/"]');
-        await tab.click('[href="/p/CQXjVexr1OH/"]');
+        await tab.waitForSelector('[href="/p/CQ8jjfGrA3d/"]');
+        await tab.click('[href="/p/CQ8jjfGrA3d/"]');
         await tab.waitForSelector(".fr66n");
         await tab.click(".fr66n");
         for(let i=0;i<25;i++){
