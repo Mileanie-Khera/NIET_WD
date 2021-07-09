@@ -49,7 +49,8 @@ body {
   align-items: center;
 }
 
-.filter:hover {
+.filter:hover,
+.filter-selected{
   background-color: #747d8c;
 }
 
