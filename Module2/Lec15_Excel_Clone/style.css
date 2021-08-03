@@ -176,3 +176,13 @@ body {
   width: 4rem;
   text-align: center;
 }
+
+.bold-selected {
+  font-weight: bold;
+}
+.italics-selected {
+  font-style: italic;
+}
+.underlined-selected {
+  text-decoration: underline;
+}

@@ -1,6 +1,6 @@
 let allAlignmentOptions = document.querySelectorAll(".align-cell-content span");
 let allColorOptions = document.querySelectorAll(".cell-color-options span");
-
+let allStyleOptions = document.querySelectorAll(".bold-italics-underline span")
 let menuBarOptions = document.querySelectorAll(".menu-bar-section div");
 
 let fileOptions = menuBarOptions[0];
@@ -13,6 +13,10 @@ let rightAlign = allAlignmentOptions[2];
 
 let bgColorPicker = allColorOptions[0];
 let fontColorPicker = allColorOptions[1];
+
+let boldOption = allStyleOptions[0];
+let italicsOption = allStyleOptions[1];
+let underlinedOption = allStyleOptions[2];
 
 leftAlign.addEventListener("click", function () {
   if (lastCell) {
@@ -95,3 +99,30 @@ fileOptions.addEventListener("click", function () {
     fileOptions.append(dropDown);
   }
 });
+boldOption.addEventListener("click",function () {
+  if(lastCell){
+    if (lastCell.classList.contains("bold-selected")) {
+      lastCell.classList.remove("bold-selected");
+    } else {
+      lastCell.classList.add("bold-selected");      
+    }
+  }
+})
+italicsOption.addEventListener("click",function () {
+  if(lastCell){
+    if (lastCell.classList.contains("italics-selected")) {
+      lastCell.classList.remove("italics-selected");
+    } else {
+      lastCell.classList.add("italics-selected");      
+    }
+  }
+})
+underlinedOption.addEventListener("click",function () {
+  if(lastCell){
+    if (lastCell.classList.contains("underlined-selected")) {
+      lastCell.classList.remove("underlined-selected");
+    } else {
+      lastCell.classList.add("underlined-selected");      
+    }
+  }
+})
