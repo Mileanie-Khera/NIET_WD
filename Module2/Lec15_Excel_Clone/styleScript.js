@@ -3,6 +3,7 @@ let allColorOptions = document.querySelectorAll(".cell-color-options span");
 let allStyleOptions = document.querySelectorAll(".bold-italics-underline span")
 let menuBarOptions = document.querySelectorAll(".menu-bar-section div");
 
+
 let fileOptions = menuBarOptions[0];
 
 let body = document.querySelector("body");
